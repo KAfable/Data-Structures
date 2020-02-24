@@ -38,3 +38,5 @@
   - Initially you can search and remove all of the entries that are older than the cutoff O(n)
   - and then any new updates to the cache can remove the older ones
   - could you add another hash table entry that also keeps track of the oldest?
+
+## Questions
