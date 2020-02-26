@@ -45,4 +45,21 @@
   - eg if a server is handling requests form multiple sources, it will put them in a queue
 - they are not general-purpose versus arrays or linked lists
 
+## Binary Search Trees
+
+Root - topmost node in the tree
+Child - node that is directly connected to another node when moving away from root
+Parent - node that is directly connected to another node when moving towards the root
+Siblings - Nodes that share the same parent
+Leaf - a node that does not have any children of its own
+
+All left subtrees and therefore are less nodes in a BST are less than the their right counterparts
+
+Traversing a BST is important because there is context to be gained on the location.
+
+Optimized for searching, it is much more efficient than searching through an array or linked list. The tradeoff is that it is not as efficent to insert into a BST.
+
 ## Questions
+
+- just to clarify, BST's are only used for implementing maps/tables? All the nodes have to be unique right?
+- Why is inserting into a BST not efficient?
