@@ -39,4 +39,10 @@
   - and then any new updates to the cache can remove the older ones
   - could you add another hash table entry that also keeps track of the oldest?
 
+## Queues
+
+- queues are good for serializing data from multiple sources
+  - eg if a server is handling requests form multiple sources, it will put them in a queue
+- they are not general-purpose versus arrays or linked lists
+
 ## Questions
