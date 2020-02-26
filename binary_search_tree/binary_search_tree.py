@@ -12,52 +12,86 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
-        """
-        # If there is no node at root
-            # insert this as root
-        # compare value to the roof
-            # if value is smaller
-                # look left, 
-                    # if node, repeat
-                    # if no node, make one a new leaf with value
-            # if value is greater # if value is equal
-                # look right
-                    # if node, repeat
-                    # if no node, make a new leaf with value
-        """
+        if value < self.value:  # if value is smaller than node
+            if self.left:  # look left
+                self.left.insert(value)  # if node, repeat
+            else:
+                # if no node, make one a new leaf with value
+                self.left = BinarySearchTree(value)
+        # if value is greater or equal
+        else:
+            if self.right is not None:  # look right
+                self.right.insert(value)
+            else:
+                # if no node, make a new leaf with value
+                self.right = BinarySearchTree(value)
 
-    # Return True if the tree contains the value
-    # False if it does not
     def contains(self, target):
-        pass
-        """
-            # if no node:
-                # return False
-            # if node == value
-                # return True
-            # compare values
-                # if smaller 
-                    # contains(self.left)
-                # if bigger or ==
-                    # contains(self.right)
-        #
-        """
+        if self.value == target:
+            return True
+        else:
+            if self.value < target:
+                return False if self.right is None else self.right.contains(target)
+            else:
+                return False if self.left is None else self.right.contains(target)
 
-    # Return the maximum value found in the tree
+    def get_max_iterative(self):
+        current = self
+        highest = current.value
+        while current.right is not None:
+            current = current.right
+        return current.value if current is not None else highest
+
     def get_max(self):
-        # while you can go right, go right
-        pass
+        if self.right is None:
+            return self.value
+        else:
+            return max(self.value, self.right.get_max())
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
+    # def for_each(self, cb):
+    #     cb(self.value)
+    #     if self.left is not None:
+    #         self.left.for_each(cb)
+    #         if self.right is not None:
+    #             self.right.for_each(cb)
+    #     elif self.right is not None:
+    #         self.right.for_each(cb)
+    #         if self.left is not None:
+    #             self.left.for_each(cb)
+    #     else:
+    #         return
+
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        if self.left:
+            self.left.for_each(cb)
+            if self.right:
+                self.right.for_each(cb)
+        elif self.right:
+            self.right.for_each(cb)
+            if self.left:
+                self.left.for_each(cb)
+        else:
+            return
+
+        # cb(self.value)
+        # if self.left is None and self.right is None:
+        #     return
+        # elif self.left is None and self.right is not None:
+        #     self.right.for_each(cb)
+        # elif self.left is not None and self.right is None:
+        #     self.left.for_each(cb)
+        # else:
+        #     self.left.for_each(cb)
+        #     self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self, node):
         pass
 
