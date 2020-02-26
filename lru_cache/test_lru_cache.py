@@ -29,7 +29,6 @@ class CacheTests(unittest.TestCase):
         self.assertIsNone(self.cache.get('item2'))
 
     def test_cache_nonexistent_retrieval(self):
-        print(f"\nlist in nonexistent :{self.cache.list}")
         self.assertIsNone(self.cache.get('nonexistent'))
 
 
