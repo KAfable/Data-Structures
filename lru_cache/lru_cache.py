@@ -1,5 +1,4 @@
 from doubly_linked_list import DoublyLinkedList
-from doubly_linked_list import ListNode
 
 
 class LRUCache:
@@ -14,16 +13,18 @@ class LRUCache:
     def get(self, key):
         """Retrieves the value associated with the given key. Also needs to move the key-value pair to the end of the order such that the pair is considered most-recently used. Returns the value associated with the key or None if the key-value pair doesn't exist in the cache."""
         if key in self.storage:
-            self.cache.move_to_end(self.storage[key])
-            return self.storage[key].value[1]
+            node = self.storage[key]
+            self.cache.move_to_end(node)
+            return node.value[1]
         else:
             return None
 
     def set(self, key, value):
         """Adds the given key-value pair to the cache. The newly- added pair should be considered the most-recently used entry in the cache. If the cache is already at max capacity before this entry is added, then the oldest entry in the cache needs to be removed to make room. Additionally, in the case that the key already exists in the cache, we simply want to overwrite the old value associated with the key with the newly-specified value. """
         if key in self.storage:  # if key exists, just overwrite tuple, and move to end
-            self.storage[key].value = (key, value)
-            self.cache.move_to_end(self.storage[key])
+            node = self.storage[key]
+            node.value = (key, value)
+            self.cache.move_to_end(node)
         else:   # otherwise we care about the size
             if self.size == self.limit:   # make room by removing old
                 self.storage.pop(self.cache.head.value[0])
