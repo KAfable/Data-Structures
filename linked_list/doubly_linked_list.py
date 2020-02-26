@@ -28,10 +28,8 @@ class ListNode:
         if current_prev:
             current_prev.next = self.prev
 
-    """Rearranges this ListNode's previous and next pointers
-    accordingly, effectively deleting this ListNode."""
-
     def delete(self):
+        """Rearranges this ListNode's previous and next pointers accordingly, effectively deleting this ListNode."""
         if self.prev:
             self.prev.next = self.next
         if self.next:
@@ -60,33 +58,24 @@ class DoublyLinkedList:
         return s
 
     def add_to_head(self, value):
-        """Wraps the given value in a ListNode and inserts it
-        as the new head of the list. Don't forget to handle
-        the old head node's previous pointer accordingly."""
+        """Wraps the given value in a ListNode and inserts it as the new head of the list. Don't forget to handle the old head node's previous pointer accordingly."""
         self.length += 1
         # if this is an empty list
         if not self.head and not self.tail:
             self.head = self.tail = ListNode(value)
         else:
-            # otherwise proceed normally
-            # insert_before also takes care of the changing pointers
             self.head.insert_before(value)
-            # set the list head to the newly created node (already inserted before the head)
             self.head = self.head.prev
 
     def remove_from_head(self):
-        """Removes the List's current head node, making the
-        current head's next node the new head of the List.
-        Returns the value of the removed Node."""
+        """Removes the List's current head node, making the current head's next node the new head of the List. Returns the value of the removed Node."""
         # delete current head node
         value = self.head.value
         self.delete(self.head)
         return value
 
     def add_to_tail(self, value):
-        """Wraps the given value in a ListNode and inserts it
-        as the new tail of the list. Don't forget to handle
-        the old tail node's next pointer accordingly."""
+        """Wraps the given value in a ListNode and inserts it as the new tail of the list. Don't forget to handle the old tail node's next pointer accordingly."""
         # similar to add_to_head
         self.length += 1
         if not self.head and not self.tail:
@@ -133,17 +122,25 @@ class DoublyLinkedList:
             return
         else:
             node.delete()
-
         self.length -= 1
 
     def get_max(self):
         """Returns the highest value currently in the list"""
-        if self.head is None and self.tail is None:
-            return None
         current = self.head
-        highest = self.head.value
-        while current is not None:
-            if current.value > highest:
-                highest = current.value
-            current = current.next
-        return highest
+
+        def find_max(node):
+            if node.next is None:
+                return node.value
+            else:
+                return max(node.value, find_max(node.next))
+
+        return find_max(current)
+        # if self.head is None and self.tail is None:
+        #     return None
+        # current = self.head
+        # highest = self.head.value
+        # while current is not None:
+        #     if current.value > highest:
+        #         highest = current.value
+        #     current = current.next
+        # return highest
