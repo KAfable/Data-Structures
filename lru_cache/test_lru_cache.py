@@ -20,7 +20,6 @@ class CacheTests(unittest.TestCase):
         self.cache.set('item1', 'a')
         self.cache.set('item2', 'b')
         self.cache.set('item3', 'c')
-
         self.assertEqual(self.cache.get('item1'), 'a')
         self.cache.set('item4', 'd')
 
@@ -30,6 +29,7 @@ class CacheTests(unittest.TestCase):
         self.assertIsNone(self.cache.get('item2'))
 
     def test_cache_nonexistent_retrieval(self):
+        print(f"\nlist in nonexistent :{self.cache.list}")
         self.assertIsNone(self.cache.get('nonexistent'))
 
 
