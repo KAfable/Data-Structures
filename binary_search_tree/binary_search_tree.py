@@ -11,7 +11,7 @@ class BinarySearchTree:
         self.right = None
 
     def __repr__(self):
-        return f"BinaryTree({self.value}, {self.left}, {self.right})"
+        return f"BinaryTree({self.left}, {self.value}, {self.right})"
 
     # Insert the given value into the tree
     def insert(self, value):
