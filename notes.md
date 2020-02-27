@@ -59,6 +59,27 @@ Traversing a BST is important because there is context to be gained on the locat
 
 Optimized for searching, it is much more efficient than searching through an array or linked list. The tradeoff is that it is not as efficent to insert into a BST.
 
+## Traversals
+
+### Breadth First Traversal (level order)
+
+- Grokking has a chapter on breadth first traversal
+
+### Pre-Order
+
+![https://imgur.com/a/KtbgtG2](https://i.imgur.com/1wvCoxp.png)
+
+- Does the processes the node first before exploring the other subtrees
+- It would print out `[A, B, D, E, F, C]`
+
+### In order
+
+-
+
+### Postorder
+
+-
+
 ## Questions
 
 - just to clarify, BST's are only used for implementing maps/tables? All the nodes have to be unique right?
