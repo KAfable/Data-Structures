@@ -8,6 +8,9 @@ class ListNode:
         self.prev = prev
         self.next = next
 
+    def __repr__(self):
+        return f"ListNode({self.prev}, {self.value}, {self.next})"
+
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
     have a next node it is point to."""
@@ -52,6 +55,14 @@ class DoublyLinkedList:
         return self.length
 
     def __str__(self):
+        current = self.head
+        s = ''
+        while current is not None:
+            s += str(current.value) + " "
+            current = current.next
+        return s
+
+    def __repr__(self):
         current = self.head
         s = ''
         while current is not None:

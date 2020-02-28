@@ -125,19 +125,19 @@ class BinarySearchTree:
             self.right.in_order_print_recursively(self.right)
 
     # this wont work because it needs control flow to not revsit
-    # def in_order_print(self, node):
-    #     stack = Stack()
-    #     stack.push(node)
-    #     current = node
-    #     while stack.size > 0:
-    #         while current.left:
-    #             current = current.left
-    #             stack.push(current)
-    #         current = stack.pop()
-    #         print(current.value)
-    #         while current.right:
-    #             current = current.right
-    #             stack.push(current)
+    def in_order_print(self, node):
+        stack = Stack()
+        stack.push(node)
+        current = node
+        while stack.size > 0:
+            while current.left:
+                current = current.left
+                stack.push(current)
+            current = stack.pop()
+            print(current.value)
+            while current.right:
+                current = current.right
+                stack.push(current)
 
     # def in_order_print(self, node):
     #     stack = Stack()
