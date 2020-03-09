@@ -150,14 +150,6 @@ class BinarySearchTree:
     #             stack.push(current.right)
     #         print(current.value)
 
-        # 1. if node exists, push it to the stack
-        # 2. if you can, move it the left
-        # 3. push to to the stack
-        # 4. repeat 2 - 3 until you can't go left
-        # 5. pop and print the top of the stack
-        # 6. if you can, move it the right
-        # 7. push it to the stack
-
         # initialize a stack
         # push root to stack
         # while stack not empty
@@ -166,20 +158,19 @@ class BinarySearchTree:
         # if temp has right right put into stack
         # if temp has left left put into stack
 
-        # BFT Steps:
-        # initialize a queue
-        # push root to queue
-        # while stack not empty
-        # pop top item out of queue into temp
-        # DO THE THING!!!!!!
-        # if temp has right right put into queue
-        # if temp has left left put into queue
-
         # Print the value of every node, starting with the given node,
         # in an iterative breadth first traversal
 
     def bft_print(self, node):
-        pass
+        queue = Queue()
+        queue.enqueue(node)
+        while queue.size > 0:
+            current = queue.dequeue()
+            if current.left is not None:
+                queue.enqueue(current.left)
+            if current.right is not None:
+                queue.enqueue(current.right)
+            print(current.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -199,8 +190,16 @@ class BinarySearchTree:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft(self.left)
+        if self.right:
+            self.right.pre_order_dft(self.right)
 
-    # Print Post-order recursive DFT
+        # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if self.left:
+            self.left.post_order_dft(self.left)
+        if self.right:
+            self.right.post_order_dft(self.right)
+        print(self.value)
