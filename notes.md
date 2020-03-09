@@ -64,6 +64,7 @@ Optimized for searching, it is much more efficient than searching through an arr
 ### Breadth First Traversal (level order)
 
 - Grokking has a chapter on breadth first traversal
+- it cannot be recursive because each sequential step is not a subset of the problem
 
 ### Pre-Order
 
